@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FYPeComm.Models
+namespace FYPeComm.DAL
 {
-    public class ColourModel
+    public class DbInitializer
     {
     }
 }
