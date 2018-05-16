@@ -2,26 +2,21 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using FYPeComm.DAL;
-using FYPeComm.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using FYPeComm.DAL;
+using FYPeComm.Models;
 
 namespace FYPeComm.Controllers
 {
-    public class ProductDetailController : Controller
+    public class ProdSizeColourLinksController : Controller
     {
         private readonly ProductContext _context;
 
-        public ProductDetailController(ProductContext context)
+        public ProdSizeColourLinksController(ProductContext context)
         {
             _context = context;
-        }
-
-        public IActionResult ViewProduct()
-        {
-            return View();
         }
 
         // GET: ProdSizeColourLinks
