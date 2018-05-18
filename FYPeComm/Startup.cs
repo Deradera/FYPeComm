@@ -51,9 +51,14 @@ namespace FYPeComm
                     "{area:exists}/{controller}/{action}"
                 );
 
+                routes.MapAreaRoute(
+                    name: "storeRoute",
+                    areaName: "Store",
+                    template: "{area:exists}/{constroller}/{action}");
+                    
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{area=Store}/{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

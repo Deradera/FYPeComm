@@ -2,9 +2,9 @@
 
 <div id="admin_options">
     <div id="option">
-        <a asp-area="" asp-controller="Admin" asp-action="Index">Edit Product Detail</a>
+        <a class="btn btn-default">@Html.ActionLink("Edit Product Detail", "Index", "ProductDetails", new { Area = "Admin" })</a>
     </div>
     <div id="option">
-        <a asp-area="" asp-controller="Admin" asp-action="Index">Add Product</a>
+        <a class="btn btn-default">@Html.ActionLink("Add Product", "Index", "Products", new { Area = "Admin" })</a>
     </div>
 </div>

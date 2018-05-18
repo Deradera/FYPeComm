@@ -8,6 +8,7 @@ using FYPeComm.Models;
 
 namespace FYPeComm.Controllers
 {
+    [Area("Store")]
     public class HomeController : Controller
     {
         public IActionResult Index()

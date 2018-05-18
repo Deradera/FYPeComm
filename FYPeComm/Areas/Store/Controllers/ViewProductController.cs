@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FYPeComm.Controllers
 {
+    [Area("Store")]
     public class ViewProductController : Controller
     {
         private readonly ProductContext _context;
