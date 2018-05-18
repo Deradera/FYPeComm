@@ -7,7 +7,7 @@
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
-    display: flex;
+    display: inline-block;
     width: 100%;
     padding-left: 15px;
     padding-right: 15px;
@@ -39,6 +39,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.product-preview {
+    width:10rem;
+    border-radius: 25px;
 }
 
 select {

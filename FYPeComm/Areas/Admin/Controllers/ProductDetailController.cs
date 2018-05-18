@@ -10,6 +10,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FYPeComm.Controllers
 {
+    [Area("Admin")]
+    [Route("Admin/[controller]")]
     public class ProductDetailController : Controller
     {
         private readonly ProductContext _context;
@@ -25,7 +27,7 @@ namespace FYPeComm.Controllers
         }
 
         // GET: ProdSizeColourLinks
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> ProductDetailIndex()
         {
             var productContext = _context.ProductSizeColourLinks.Include(p => p.Colour).Include(p => p.Prod).Include(p => p.Size);
             return View(await productContext.ToListAsync());
@@ -72,7 +74,7 @@ namespace FYPeComm.Controllers
             {
                 _context.Add(prodSizeColourLink);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(ProductDetailIndex));
             }
             ViewData["ColourId"] = new SelectList(_context.Colour, "ColourId", "ColourName", prodSizeColourLink.ColourId);
             ViewData["ProdId"] = new SelectList(_context.Product, "ProdId", "ProdDesc", prodSizeColourLink.ProdId);
@@ -129,7 +131,7 @@ namespace FYPeComm.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(ProductDetailIndex));
             }
             ViewData["ColourId"] = new SelectList(_context.Colour, "ColourId", "ColourName", prodSizeColourLink.ColourId);
             ViewData["ProdId"] = new SelectList(_context.Product, "ProdId", "ProdDesc", prodSizeColourLink.ProdId);
@@ -166,7 +168,7 @@ namespace FYPeComm.Controllers
             var prodSizeColourLink = await _context.ProductSizeColourLinks.SingleOrDefaultAsync(m => m.Id == id);
             _context.ProductSizeColourLinks.Remove(prodSizeColourLink);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(ProductDetailIndex));
         }
 
         private bool ProdSizeColourLinkExists(int id)

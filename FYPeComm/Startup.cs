@@ -45,9 +45,15 @@ namespace FYPeComm
 
             app.UseMvc(routes =>
             {
+                routes.MapAreaRoute(
+                    "adminRoute",
+                    "admin",
+                    "{area:exists}/{controller}/{action}"
+                );
+
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=ProdSizeColourLinks}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
