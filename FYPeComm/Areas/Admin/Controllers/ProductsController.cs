@@ -8,10 +8,9 @@ using Microsoft.EntityFrameworkCore;
 using FYPeComm.DAL;
 using FYPeComm.Models;
 
-namespace FYPeComm.Controllers
+namespace FYPeComm.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Route("Admin/[controller]")]
     public class ProductsController : Controller
     {
         private readonly ProductContext _context;
@@ -21,14 +20,14 @@ namespace FYPeComm.Controllers
             _context = context;
         }
 
-        // GET: Products
-        public async Task<IActionResult> ProductIndex()
+        // GET: Admin/Products
+        public async Task<IActionResult> Index()
         {
             var productContext = _context.Product.Include(p => p.SubCat);
             return View(await productContext.ToListAsync());
         }
 
-        // GET: Products/Details/5
+        // GET: Admin/Products/Details/5
         public async Task<IActionResult> Details(Guid? id)
         {
             if (id == null)
@@ -47,14 +46,14 @@ namespace FYPeComm.Controllers
             return View(product);
         }
 
-        // GET: Products/Create
+        // GET: Admin/Products/Create
         public IActionResult Create()
         {
             ViewData["SubCatId"] = new SelectList(_context.ProdSubCat, "ProdSubCatId", "ProdSubCatName");
             return View();
         }
 
-        // POST: Products/Create
+        // POST: Admin/Products/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -66,13 +65,13 @@ namespace FYPeComm.Controllers
                 product.ProdId = Guid.NewGuid();
                 _context.Add(product);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(ProductIndex));
+                return RedirectToAction(nameof(Index));
             }
             ViewData["SubCatId"] = new SelectList(_context.ProdSubCat, "ProdSubCatId", "ProdSubCatName", product.SubCatId);
             return View(product);
         }
 
-        // GET: Products/Edit/5
+        // GET: Admin/Products/Edit/5
         public async Task<IActionResult> Edit(Guid? id)
         {
             if (id == null)
@@ -89,7 +88,7 @@ namespace FYPeComm.Controllers
             return View(product);
         }
 
-        // POST: Products/Edit/5
+        // POST: Admin/Products/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -119,13 +118,13 @@ namespace FYPeComm.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(ProductIndex));
+                return RedirectToAction(nameof(Index));
             }
             ViewData["SubCatId"] = new SelectList(_context.ProdSubCat, "ProdSubCatId", "ProdSubCatName", product.SubCatId);
             return View(product);
         }
 
-        // GET: Products/Delete/5
+        // GET: Admin/Products/Delete/5
         public async Task<IActionResult> Delete(Guid? id)
         {
             if (id == null)
@@ -144,7 +143,7 @@ namespace FYPeComm.Controllers
             return View(product);
         }
 
-        // POST: Products/Delete/5
+        // POST: Admin/Products/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid id)
@@ -152,7 +151,7 @@ namespace FYPeComm.Controllers
             var product = await _context.Product.SingleOrDefaultAsync(m => m.ProdId == id);
             _context.Product.Remove(product);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(ProductIndex));
+            return RedirectToAction(nameof(Index));
         }
 
         private bool ProductExists(Guid id)

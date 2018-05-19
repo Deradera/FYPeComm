@@ -11,7 +11,6 @@ using FYPeComm.Models;
 namespace FYPeComm.Controllers
 {
     [Area("Admin")]
-    [Route("Admin")]
     public class AdminController : Controller
     {
         private readonly ProductContext _context;
@@ -26,14 +25,14 @@ namespace FYPeComm.Controllers
             return View();
         }
 
-        public IActionResult ProductDetail()
-        {
-            return View();
-        }
+        //public IActionResult ProductDetail()
+        //{
+        //    return View();
+        //}
 
-        public IActionResult Products()
-        {
-            return View();
-        }
+        //public IActionResult Products()
+        //{
+        //    return View();
+        //}
     }
 }

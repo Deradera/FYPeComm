@@ -10,6 +10,7 @@ using FYPeComm.Models;
 
 namespace FYPeComm.Controllers
 {
+    [Area("Store")]
     public class ProdSizeColourLinksController : Controller
     {
         private readonly ProductContext _context;

@@ -2,38 +2,32 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using FYPeComm.DAL;
-using FYPeComm.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using FYPeComm.DAL;
+using FYPeComm.Models;
 
-namespace FYPeComm.Controllers
+namespace FYPeComm.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Route("Admin/[controller]")]
-    public class ProductDetailController : Controller
+    public class ProductDetailsController : Controller
     {
         private readonly ProductContext _context;
 
-        public ProductDetailController(ProductContext context)
+        public ProductDetailsController(ProductContext context)
         {
             _context = context;
         }
 
-        public IActionResult ViewProduct()
-        {
-            return View();
-        }
-
-        // GET: ProdSizeColourLinks
-        public async Task<IActionResult> ProductDetailIndex()
+        // GET: Admin/ProductDetails
+        public async Task<IActionResult> Index()
         {
             var productContext = _context.ProductSizeColourLinks.Include(p => p.Colour).Include(p => p.Prod).Include(p => p.Size);
             return View(await productContext.ToListAsync());
         }
 
-        // GET: ProdSizeColourLinks/Details/5
+        // GET: Admin/ProductDetails/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -54,7 +48,7 @@ namespace FYPeComm.Controllers
             return View(prodSizeColourLink);
         }
 
-        // GET: ProdSizeColourLinks/Create
+        // GET: Admin/ProductDetails/Create
         public IActionResult Create()
         {
             ViewData["ColourId"] = new SelectList(_context.Colour, "ColourId", "ColourName");
@@ -63,7 +57,7 @@ namespace FYPeComm.Controllers
             return View();
         }
 
-        // POST: ProdSizeColourLinks/Create
+        // POST: Admin/ProductDetails/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -74,7 +68,7 @@ namespace FYPeComm.Controllers
             {
                 _context.Add(prodSizeColourLink);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(ProductDetailIndex));
+                return RedirectToAction(nameof(Index));
             }
             ViewData["ColourId"] = new SelectList(_context.Colour, "ColourId", "ColourName", prodSizeColourLink.ColourId);
             ViewData["ProdId"] = new SelectList(_context.Product, "ProdId", "ProdDesc", prodSizeColourLink.ProdId);
@@ -82,7 +76,7 @@ namespace FYPeComm.Controllers
             return View(prodSizeColourLink);
         }
 
-        // GET: ProdSizeColourLinks/Edit/5
+        // GET: Admin/ProductDetails/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -101,7 +95,7 @@ namespace FYPeComm.Controllers
             return View(prodSizeColourLink);
         }
 
-        // POST: ProdSizeColourLinks/Edit/5
+        // POST: Admin/ProductDetails/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -131,7 +125,7 @@ namespace FYPeComm.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(ProductDetailIndex));
+                return RedirectToAction(nameof(Index));
             }
             ViewData["ColourId"] = new SelectList(_context.Colour, "ColourId", "ColourName", prodSizeColourLink.ColourId);
             ViewData["ProdId"] = new SelectList(_context.Product, "ProdId", "ProdDesc", prodSizeColourLink.ProdId);
@@ -139,7 +133,7 @@ namespace FYPeComm.Controllers
             return View(prodSizeColourLink);
         }
 
-        // GET: ProdSizeColourLinks/Delete/5
+        // GET: Admin/ProductDetails/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -160,7 +154,7 @@ namespace FYPeComm.Controllers
             return View(prodSizeColourLink);
         }
 
-        // POST: ProdSizeColourLinks/Delete/5
+        // POST: Admin/ProductDetails/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -168,7 +162,7 @@ namespace FYPeComm.Controllers
             var prodSizeColourLink = await _context.ProductSizeColourLinks.SingleOrDefaultAsync(m => m.Id == id);
             _context.ProductSizeColourLinks.Remove(prodSizeColourLink);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(ProductDetailIndex));
+            return RedirectToAction(nameof(Index));
         }
 
         private bool ProdSizeColourLinkExists(int id)
