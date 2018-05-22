@@ -14,27 +14,27 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="ProdId" />
             <div class="form-group">
-                <label asp-for="ProdName" class="control-label"></label>
+                <label asp-for="ProdName" class="control-label">Product Name</label>
                 <input asp-for="ProdName" class="form-control" />
                 <span asp-validation-for="ProdName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ProdDesc" class="control-label"></label>
+                <label asp-for="ProdDesc" class="control-label">Product Description</label>
                 <input asp-for="ProdDesc" class="form-control" />
                 <span asp-validation-for="ProdDesc" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ProdPrice" class="control-label"></label>
+                <label asp-for="ProdPrice" class="control-label">Price</label>
                 <input asp-for="ProdPrice" class="form-control" />
                 <span asp-validation-for="ProdPrice" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ProdImg" class="control-label"></label>
+                <label asp-for="ProdImg" class="control-label">Product Image URL</label>
                 <input asp-for="ProdImg" class="form-control" />
                 <span asp-validation-for="ProdImg" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="SubCatId" class="control-label"></label>
+                <label asp-for="SubCatId" class="control-label">Product Category</label>
                 <select asp-for="SubCatId" class="form-control" asp-items="ViewBag.SubCatId"></select>
                 <span asp-validation-for="SubCatId" class="text-danger"></span>
             </div>
@@ -46,6 +46,6 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a>@Html.ActionLink("Back to List", "Index", "Products", new { Area = "Admin" }, null)</a>
 </div>
 

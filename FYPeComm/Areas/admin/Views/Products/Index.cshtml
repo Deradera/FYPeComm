@@ -7,7 +7,7 @@
 <h2>Index</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a>@Html.ActionLink("Create New", "Create", "Products", new { Area = "Admin" }, null)</a>
 </p>
 <table class="table">
     <thead>
@@ -49,11 +49,15 @@
                 @Html.DisplayFor(modelItem => item.SubCat.ProdSubCatName)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.ProdId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ProdId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ProdId">Delete</a>
+                <a>@Html.ActionLink("Edit", "Edit", "Products", new { Area = "Admin", id = item.ProdId }, null)</a> |
+                <a>@Html.ActionLink("Details", "Details", "Products", new { Area = "Admin", id = item.ProdId }, null)</a>  |
+                <a>@Html.ActionLink("Delete", "Delete", "Products", new { Area = "Admin", id = item.ProdId }, null)</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+
+<div>
+    <a>@Html.ActionLink("Back to Admin Panel", "Index", "Admin", new { Area = "Admin" }, null)</a>
+</div>

@@ -1,16 +1,23 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
+@model IEnumerable<FYPeComm.Models.Product>
+
 @{
 }
 <div class="breadcrumb">
     <h4>Breadcrumb trail through categories</h4>
 </div>
-<div id="categories">
+<div class="container">
+    <div id="categories">
 
-</div>
-<div class="product-preview">
-    <img src="~/images/Products/white tshirt.jpg" />
-    <p>FYP T-shirt</p>
-    <p>£1.00</p>
+    </div>
+    @foreach (var item in Model)
+    {
+        <div class="product-preview">
+            <img src="~/images/Products/white tshirt.jpg" />
+            <p>@Html.DisplayFor(modelItem => item.ProdName)</p>
+            <p>@Html.DisplayFor(modelItem => item.ProdPrice)</p>
+        </div>
+    }
 </div>

@@ -13,15 +13,15 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="ProdId" class="control-label"></label>
+                <label asp-for="ProdId" class="control-label">ProdId</label>
                 <select asp-for="ProdId" class ="form-control" asp-items="ViewBag.ProdId"></select>
             </div>
             <div class="form-group">
-                <label asp-for="SizeId" class="control-label"></label>
+                <label asp-for="SizeId" class="control-label">SizeId</label>
                 <select asp-for="SizeId" class ="form-control" asp-items="ViewBag.SizeId"></select>
             </div>
             <div class="form-group">
-                <label asp-for="ColourId" class="control-label"></label>
+                <label asp-for="ColourId" class="control-label">ColourId</label>
                 <select asp-for="ColourId" class ="form-control" asp-items="ViewBag.ColourId"></select>
             </div>
             <div class="form-group">
@@ -32,6 +32,6 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a>@Html.ActionLink("Back to List", "Index", "ProductDetails", new { Area = "Admin" }, null)</a>
 </div>
 
