@@ -1,11 +1,12 @@
 ﻿@model FYPeComm.Models.Product
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Delete";
 }
 
-<h2>Details</h2>
+<h2>Delete</h2>
 
+<h3>Are you sure you want to delete this?</h3>
 <div>
     <h4>Product</h4>
     <hr />
@@ -29,15 +30,22 @@
             @Html.DisplayFor(model => model.ProdPrice)
         </dd>
         <dt>
+            @Html.DisplayNameFor(model => model.ProdImg)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ProdImg)
+        </dd>
+        <dt>
             @Html.DisplayNameFor(model => model.SubCat)
         </dt>
         <dd>
             @Html.DisplayFor(model => model.SubCat.ProdSubCatName)
         </dd>
     </dl>
-    <img src="@Url.Content(Model.ProdImg)" alt="Product Image"/>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.ProdId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="ProdId" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
 </div>

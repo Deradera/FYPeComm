@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace FYPeComm.Models
 {
@@ -13,6 +14,7 @@ namespace FYPeComm.Models
         public Guid ProdId { get; set; }
         public string ProdName { get; set; }
         public string ProdDesc { get; set; }
+        [DataType(DataType.Currency)]
         public double ProdPrice { get; set; }
         public string ProdImg { get; set; }
         public int SubCatId { get; set; }
