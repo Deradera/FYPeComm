@@ -3,41 +3,25 @@
 @{
     ViewData["Title"] = "Details";
 }
-
-<h2>Details</h2>
-
-<div>
-    <h4>Product</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ProdName)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ProdName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ProdDesc)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ProdDesc)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ProdPrice)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ProdPrice)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.SubCat)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.SubCat.ProdSubCatName)
-        </dd>
-    </dl>
-    <img src="@Url.Content(Model.ProdImg)" alt="Product Image"/>
+<div class="breadcrumb">
+    <button class="btn btn-default" onclick="window.location.href='@Url.Action("ProductSelection", "Home", new { Area = "Store" })';"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Back</button>
+    <h4 class="padleft">@Html.DisplayFor(model => model.SubCat.ProdSubCatName)</h4>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.ProdId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+<div class="container">
+    <img class="product-image col-sm-6" src="@Url.Content(Model.ProdImg)" alt="Product Image" />
+    <div class="col-sm-6">
+        <div class="product-title">
+            <h2>
+                @Html.DisplayFor(model => model.ProdName)
+            </h2>
+            <h2>
+                @Html.DisplayFor(model => model.ProdPrice)
+            </h2>
+        </div>
+        <div>
+            <p>
+                @Html.DisplayFor(model => model.ProdDesc)
+            </p>
+        </div>
+    </div>
 </div>

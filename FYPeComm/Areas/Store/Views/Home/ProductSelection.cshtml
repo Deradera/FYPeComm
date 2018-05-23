@@ -14,10 +14,12 @@
     </div>
     @foreach (var item in Model)
     {
-        <button class="product-preview" onclick="window.location.href='@Url.Action("Details", "Products", new { Area = "Store", id = item.ProdId })';">
-            <img src=@Url.Content(item.ProdImg) alt="Product Image" />
-            <h5>@Html.DisplayFor(modelItem => item.ProdName)</h5>
-            <h5>@Html.DisplayFor(modelItem => item.ProdPrice)</h5>
-        </button>
+        <a href=@Url.Action("Details", "Products", new { Area = "Store", id = item.ProdId })>
+            <div class="product-preview">
+                <img src=@Url.Content(item.ProdImg) alt="Product Image" />
+                <h5>@Html.DisplayFor(modelItem => item.ProdName)</h5>
+                <h5>@Html.DisplayFor(modelItem => item.ProdPrice)</h5>
+            </div>
+        </a>
     }
 </div>
