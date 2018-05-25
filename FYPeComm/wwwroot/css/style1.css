@@ -39,6 +39,11 @@
     align-items: center;
 }
 
+a.nolinkstyle { 
+    color:black;
+    text-decoration:none;
+}
+
 .product-preview {
     width:200px;
 }

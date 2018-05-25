@@ -7,19 +7,19 @@
 <h2>Index</h2>
 
 <p>
-    <a>@Html.ActionLink("Create New", "Create", "ProductDetails", new { Area = "Admin" }, null)</a>
+    <button class="btn btn-primary" onclick="window.location.href='@Url.Action("Create", "ProductDetails", new { Area = "Admin" })';">Create New</button>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Colour)
+                Product Name
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Prod)
+                Colour
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Size)
+                Size
             </th>
             <th></th>
         </tr>
@@ -28,10 +28,10 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Colour.ColourName)
+                @Html.DisplayFor(modelItem => item.Prod.ProdName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Prod.ProdDesc)
+                @Html.DisplayFor(modelItem => item.Colour.ColourName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Size.SizeName)
@@ -47,5 +47,5 @@
 </table>
 
 <div>
-    <a>@Html.ActionLink("Back to Admin Panel", "Index", "Admin", new { Area = "Admin" }, null)</a>
+    <button class="btn btn-default" onclick="window.location.href='@Url.Action("Index", "Admin", new { Area = "Admin" })';"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Back to Admin Panel</button>
 </div>

@@ -58,7 +58,7 @@ namespace FYPeComm
                     
                 routes.MapRoute(
                     name: "default",
-                    template: "{area=Store}/{controller=Home}/{action=Index}/{id?}");
+                    template: "{area=Store}/{controller=Home}/{action=ProductSelection}/{id?}");
             });
         }
     }

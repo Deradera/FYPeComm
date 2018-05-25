@@ -2,9 +2,9 @@
 
 <div id="admin_options">
     <div id="option">
-        <a class="btn btn-default">@Html.ActionLink("Add/Edit Product Colour Size links", "Index", "ProductDetails", new { Area = "Admin" })</a>
+        <button class="btn btn-default" onclick="window.location.href='@Url.Action("Index", "ProductDetails", new { Area = "Admin" })';"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add/Edit Product Colour Size links</button>
     </div>
     <div id="option">
-        <a class="btn btn-default">@Html.ActionLink("Add Product", "Index", "Products", new { Area = "Admin" })</a>
+        <button class="btn btn-default" onclick="window.location.href='@Url.Action("Index", "Products", new { Area = "Admin" })';"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add/Edit Product</button>
     </div>
 </div>

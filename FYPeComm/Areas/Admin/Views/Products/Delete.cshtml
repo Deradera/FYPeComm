@@ -45,7 +45,9 @@
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="ProdId" />
-        <input type="submit" value="Delete" class="btn btn-default" /> 
-        <a>@Html.ActionLink("Back to List", "Index", "Products", new { Area = "Admin" }, null)</a>
+        <input type="submit" value="Delete" class="btn btn-danger" /> 
     </form>
+    <div>
+        <button class="btn btn-default" onclick="window.location.href='@Url.Action("Index", "Products", new { Area = "Admin" })';"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Back to List</button>
+    </div>
 </div>

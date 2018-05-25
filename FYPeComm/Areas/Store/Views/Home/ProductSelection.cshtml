@@ -5,16 +5,15 @@
 
 @{
 }
-<div class="breadcrumb">
-    <h4>Breadcrumb trail through categories</h4>
-</div>
+<h4>All Products</h4>
+<hr />
 <div class="container">
     <div id="categories">
 
     </div>
     @foreach (var item in Model)
     {
-        <a href=@Url.Action("Details", "Products", new { Area = "Store", id = item.ProdId })>
+        <a class="nolinkstyle" href=@Url.Action("Details", "Products", new { Area = "Store", id = item.ProdId })>
             <div class="product-preview">
                 <img src=@Url.Content(item.ProdImg) alt="Product Image" />
                 <h5>@Html.DisplayFor(modelItem => item.ProdName)</h5>

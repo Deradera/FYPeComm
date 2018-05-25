@@ -36,6 +36,6 @@
 </div>
 
 <div>
-    <a>@Html.ActionLink("Back to List", "Index", "ProductDetails", new { Area = "Admin" }, null)</a>
+    <button class="btn btn-default" onclick="window.location.href='@Url.Action("Index", "ProductDetails", new { Area = "Admin" })';"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Back to List</button>
 </div>
 

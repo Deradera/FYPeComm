@@ -43,6 +43,5 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.ProdId">Edit</a> |
-    <a>@Html.ActionLink("Back to List", "Index", "Products", new { Area = "Admin" }, null)</a>
+    <button class="btn btn-default" onclick="window.location.href='@Url.Action("Index", "Products", new { Area = "Admin" })';"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Back to List</button>
 </div>
