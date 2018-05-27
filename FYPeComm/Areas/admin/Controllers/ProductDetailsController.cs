@@ -52,8 +52,7 @@ namespace FYPeComm.Areas.Admin.Controllers
         public IActionResult Create()
         {
             ViewData["ColourId"] = new SelectList(_context.Colour, "ColourId", "ColourName");
-            ViewBag.ColourName = new SelectList(_context.Colour, "ColourName");
-            ViewData["ProdId"] = new SelectList(_context.Product, "ProdId", "ProdDesc");
+            ViewData["ProdId"] = new SelectList(_context.Product, "ProdId", "ProdName");
             ViewData["SizeId"] = new SelectList(_context.Size, "SizeId", "SizeName");
             return View();
         }

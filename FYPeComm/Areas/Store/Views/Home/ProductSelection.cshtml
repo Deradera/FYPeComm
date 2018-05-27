@@ -11,14 +11,16 @@
     <div id="categories">
 
     </div>
-    @foreach (var item in Model)
-    {
-        <a class="nolinkstyle" href=@Url.Action("Details", "Products", new { Area = "Store", id = item.ProdId })>
-            <div class="product-preview">
-                <img src=@Url.Content(item.ProdImg) alt="Product Image" />
-                <h5>@Html.DisplayFor(modelItem => item.ProdName)</h5>
-                <h5>@Html.DisplayFor(modelItem => item.ProdPrice)</h5>
-            </div>
-        </a>
-    }
+    <div class="product-list">
+        @foreach (var item in Model)
+        {
+            <a class="nolinkstyle" href=@Url.Action("Details", "Products", new { Area = "Store", id = item.ProdId })>
+                <div class="product-preview">
+                    <img src=@Url.Content(item.ProdImg) alt="Product Image" />
+                    <h5>@Html.DisplayFor(modelItem => item.ProdName)</h5>
+                    <h5>@Html.DisplayFor(modelItem => item.ProdPrice)</h5>
+                </div>
+            </a>
+        }
+    </div>
 </div>

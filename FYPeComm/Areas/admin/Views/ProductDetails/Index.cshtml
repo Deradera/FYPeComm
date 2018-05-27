@@ -37,9 +37,9 @@
                 @Html.DisplayFor(modelItem => item.Size.SizeName)
             </td>
             <td>
-                <a>@Html.ActionLink("Edit", "Edit", "ProductDetails", new { Area = "Admin", id = item.ProdId }, null)</a>   |
-                <a>@Html.ActionLink("Details", "Details", "ProductDetails", new { Area = "Admin", id = item.ProdId }, null)</a> |
-                <a>@Html.ActionLink("Delete", "Delete", "ProductDetails", new { Area = "Admin", id = item.ProdId }, null)</a>
+                <a>@Html.ActionLink("Edit", "Edit", "ProductDetails", new { Area = "Admin", id = item.Id }, null)</a>   |
+                <a>@Html.ActionLink("Details", "Details", "ProductDetails", new { Area = "Admin", id = item.Id }, null)</a> |
+                <a>@Html.ActionLink("Delete", "Delete", "ProductDetails", new { Area = "Admin", id = item.Id }, null)</a>
             </td>
         </tr>
 }
