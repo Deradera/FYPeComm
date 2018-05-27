@@ -20,7 +20,27 @@
     </div>
     <hr />
     <div>
-        <button class="btn btn-primary"><span class="glyphicon glyphicon-shopping-cart" aria-hidden=true></span> Add to cart</button>
+        <div class="form-group">
+            <label class="control-label">Colour</label>
+            <select class="form-control" asp-items="ViewBag.ColourId"></select>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Size</label>
+            <select class="form-control" asp-items="ViewBag.SizeId"></select>
+        </div>
+        @if (Model.Stock == 0)
+        {
+            <button class="btn btn-primary" disabled="disabled"><span class="glyphicon glyphicon-shopping-cart" aria-hidden=true></span> Add to cart</button>
+            <div class="alert alert-danger">
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                <span class="sr-only">Error:</span>
+                Sorry! This item is currently out of stock.
+            </div>
+        }
+        else
+        {
+            <button class="btn btn-primary" onclick="return alert('lol no shopping cart');"><span class="glyphicon glyphicon-shopping-cart" aria-hidden=true></span> Add to cart</button>
+        }
         <hr />
         <p>
             @Html.DisplayFor(model => model.ProdDesc)

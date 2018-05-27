@@ -43,17 +43,21 @@ namespace FYPeComm.Areas.Store.Controllers
                 return NotFound();
             }
 
-            var RelevantPSCL = _context.ProductSizeColourLinks.Where(p => p.ProdId == product.ProdId);
-            var RelevantColours = _context.Colour.Where(c => RelevantPSCL.Any(p => p.ColourId == c.ColourId)).ToList();
-            var RelevantSizes = _context.Size.Where(s => RelevantPSCL.Any(p => p.SizeId == s.SizeId)).ToList();
+            var RelevantPSCL = _context.ProductSizeColourLinks.Where(p => p.ProdId == product.ProdId).ToList();
+            if (RelevantPSCL.Count != 0)
+            {
+                ViewData["ColourId"] = new SelectList(_context.Colour.Where(c => RelevantPSCL.Any(p => p.ColourId == c.ColourId)).ToList(), "ColourId", "ColourName");
+
+                ViewData["SizeId"] = new SelectList(_context.Size.Where(s => RelevantPSCL.Any(p => p.SizeId == s.SizeId)).ToList(), "SizeId", "SizeName");
+            }
 
             return View(product);
         }
 
-        public bool IsDisabled(Product product)
+        /*public bool IsDisabled(Product product)
         {
 
-        }
+        }*/
 
     }
 }

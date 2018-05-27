@@ -23,7 +23,7 @@ namespace FYPeComm.Models
 
         public ProdSubCat SubCat { get; set; }
         public ICollection<ProdSizeColourLink> ProdSizeColourLink { get; set; }
-        public ICollection<Colour> Colour { get; set; }
-        public ICollection<Size> Size { get; set; }
+        //public List<Colour> Colour { get; set; }
+        //public List<Size> Size { get; set; }
     }
 }
