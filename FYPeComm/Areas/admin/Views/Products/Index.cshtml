@@ -12,49 +12,56 @@
 <table class="table">
     <thead>
         <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.ProdName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ProdDesc)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ProdPrice)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ProdImg)
-                </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProdName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProdDesc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProdPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProdImg)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.SubCat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stock)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProdName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProdDesc)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProdPrice)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProdImg)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SubCat.ProdSubCatName)
-            </td>
-            <td>
-                <a>@Html.ActionLink("Edit", "Edit", "Products", new { Area = "Admin", id = item.ProdId }, null)</a> |
-                <a>@Html.ActionLink("Details", "Details", "Products", new { Area = "Admin", id = item.ProdId }, null)</a>  |
-                <a>@Html.ActionLink("Delete", "Delete", "Products", new { Area = "Admin", id = item.ProdId }, null)</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProdName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProdDesc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProdPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProdImg)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SubCat.ProdSubCatName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Stock)
+                </td>
+                <td>
+                    <a>@Html.ActionLink("Edit", "Edit", "Products", new { Area = "Admin", id = item.ProdId }, null)</a> |
+                    <a>@Html.ActionLink("Details", "Details", "Products", new { Area = "Admin", id = item.ProdId }, null)</a>  |
+                    <a>@Html.ActionLink("Delete", "Delete", "Products", new { Area = "Admin", id = item.ProdId }, null)</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
 

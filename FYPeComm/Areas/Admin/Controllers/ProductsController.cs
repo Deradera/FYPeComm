@@ -54,11 +54,9 @@ namespace FYPeComm.Areas.Admin.Controllers
         }
 
         // POST: Admin/Products/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProdId,ProdName,ProdDesc,ProdPrice,ProdImg,SubCatId")] Product product)
+        public async Task<IActionResult> Create([Bind("ProdId,ProdName,ProdDesc,ProdPrice,ProdImg,SubCatId,Stock")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -89,13 +87,11 @@ namespace FYPeComm.Areas.Admin.Controllers
         }
 
         // POST: Admin/Products/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("ProdId,ProdName,ProdDesc,ProdPrice,ProdImg,SubCatId")] Product product)
+        public async Task<IActionResult> Edit(Guid ProdId, [Bind("ProdId,ProdName,ProdDesc,ProdPrice,ProdImg,SubCatId,Stock")] Product product)
         {
-            if (id != product.ProdId)
+            if (ProdId != product.ProdId)
             {
                 return NotFound();
             }
@@ -146,9 +142,9 @@ namespace FYPeComm.Areas.Admin.Controllers
         // POST: Admin/Products/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(Guid id)
+        public async Task<IActionResult> DeleteConfirmed(Guid ProdId)
         {
-            var product = await _context.Product.SingleOrDefaultAsync(m => m.ProdId == id);
+            var product = await _context.Product.SingleOrDefaultAsync(m => m.ProdId == ProdId);
             _context.Product.Remove(product);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));

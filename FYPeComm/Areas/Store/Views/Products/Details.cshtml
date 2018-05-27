@@ -7,24 +7,23 @@
     <button class="btn btn-default" onclick="window.location.href='@Url.Action("ProductSelection", "Home", new { Area = "Store" })';"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Back</button>
     <h4 class="padleft">@Html.DisplayFor(model => model.SubCat.ProdSubCatName)</h4>
 </div>
-<div class="container">
-    <img class="product-image col-sm-6" src="@Url.Content(Model.ProdImg)" alt="Product Image" />
-    <div class="col-sm-6">
-        <div class="product-title">
-            <h2>
-                @Html.DisplayFor(model => model.ProdName)
-            </h2>
-            <h2>
-                @Html.DisplayFor(model => model.ProdPrice)
-            </h2>
-        </div>
+
+<img class="product-image col-sm-6" src="@Url.Content(Model.ProdImg)" alt="Product Image" />
+<div class="col-sm-6">
+    <div class="product-title">
+        <h2>
+            @Html.DisplayFor(model => model.ProdName)
+        </h2>
+        <h2>
+            @Html.DisplayFor(model => model.ProdPrice)
+        </h2>
+    </div>
+    <hr />
+    <div>
+        <button class="btn btn-primary"><span class="glyphicon glyphicon-shopping-cart" aria-hidden=true></span> Add to cart</button>
         <hr />
-        <div>
-            <button class="btn btn-primary">Add to cart</button>
-            <hr />
-            <p>
-                @Html.DisplayFor(model => model.ProdDesc)
-            </p>
-        </div>
+        <p>
+            @Html.DisplayFor(model => model.ProdDesc)
+        </p>
     </div>
 </div>

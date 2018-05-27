@@ -18,8 +18,12 @@ namespace FYPeComm.Models
         public double ProdPrice { get; set; }
         public string ProdImg { get; set; }
         public int SubCatId { get; set; }
+        [Range(0, Int32.MaxValue, ErrorMessage = "Stock cannot be negative.")]
+        public int Stock { get; set; }
 
         public ProdSubCat SubCat { get; set; }
         public ICollection<ProdSizeColourLink> ProdSizeColourLink { get; set; }
+        public ICollection<Colour> Colour { get; set; }
+        public ICollection<Size> Size { get; set; }
     }
 }

@@ -58,7 +58,7 @@ a.nolinkstyle {
 
 .product-preview img {
     width:100%;
-    border-radius: 25px;
+    border-radius: 10px;
 }
 
 @media screen and (min-width: 768px) {

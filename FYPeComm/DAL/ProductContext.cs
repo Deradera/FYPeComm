@@ -98,11 +98,14 @@ namespace FYPeComm.DAL
 
                 entity.Property(e => e.SubCatId).HasColumnName("sub_cat_id");
 
+                entity.Property(e => e.Stock).IsRequired().HasColumnName("stock_qty");
+
                 entity.HasOne(d => d.SubCat)
                     .WithMany(p => p.Product)
                     .HasForeignKey(d => d.SubCatId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_PRODUCT_PROD_SUB_CAT");
+
             });
 
             modelBuilder.Entity<Size>(entity =>

@@ -43,120 +43,17 @@ namespace FYPeComm.Areas.Store.Controllers
                 return NotFound();
             }
 
-            return View(product);
-        }
-
-        // GET: Store/Products/Create
-        public IActionResult Create()
-        {
-            ViewData["SubCatId"] = new SelectList(_context.ProdSubCat, "ProdSubCatId", "ProdSubCatName");
-            return View();
-        }
-
-        // POST: Store/Products/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProdId,ProdName,ProdDesc,ProdPrice,ProdImg,SubCatId")] Product product)
-        {
-            if (ModelState.IsValid)
-            {
-                product.ProdId = Guid.NewGuid();
-                _context.Add(product);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["SubCatId"] = new SelectList(_context.ProdSubCat, "ProdSubCatId", "ProdSubCatName", product.SubCatId);
-            return View(product);
-        }
-
-        // GET: Store/Products/Edit/5
-        public async Task<IActionResult> Edit(Guid? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var product = await _context.Product.SingleOrDefaultAsync(m => m.ProdId == id);
-            if (product == null)
-            {
-                return NotFound();
-            }
-            ViewData["SubCatId"] = new SelectList(_context.ProdSubCat, "ProdSubCatId", "ProdSubCatName", product.SubCatId);
-            return View(product);
-        }
-
-        // POST: Store/Products/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("ProdId,ProdName,ProdDesc,ProdPrice,ProdImg,SubCatId")] Product product)
-        {
-            if (id != product.ProdId)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(product);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ProductExists(product.ProdId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["SubCatId"] = new SelectList(_context.ProdSubCat, "ProdSubCatId", "ProdSubCatName", product.SubCatId);
-            return View(product);
-        }
-
-        // GET: Store/Products/Delete/5
-        public async Task<IActionResult> Delete(Guid? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var product = await _context.Product
-                .Include(p => p.SubCat)
-                .SingleOrDefaultAsync(m => m.ProdId == id);
-            if (product == null)
-            {
-                return NotFound();
-            }
+            var RelevantPSCL = _context.ProductSizeColourLinks.Where(p => p.ProdId == product.ProdId);
+            var RelevantColours = _context.Colour.Where(c => RelevantPSCL.Any(p => p.ColourId == c.ColourId)).ToList();
+            var RelevantSizes = _context.Size.Where(s => RelevantPSCL.Any(p => p.SizeId == s.SizeId)).ToList();
 
             return View(product);
         }
 
-        // POST: Store/Products/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(Guid id)
+        public bool IsDisabled(Product product)
         {
-            var product = await _context.Product.SingleOrDefaultAsync(m => m.ProdId == id);
-            _context.Product.Remove(product);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+
         }
 
-        private bool ProductExists(Guid id)
-        {
-            return _context.Product.Any(e => e.ProdId == id);
-        }
     }
 }
